@@ -417,11 +417,11 @@ export default function Home() {
             </div>
             <a
               href="mailto:info@nodrastudio.com?subject=Quiero%20iniciar%20un%20proyecto"
-              className="group flex items-center justify-between bg-brand px-6 py-5 font-medium text-white!important"
+              className="group flex items-center justify-between bg-brand px-6 py-5 font-medium text-white!important hover:bg-[#C11007]"
             >
               <span className="text-white">Contanos tu proyecto</span>
               <span
-                className="text-2xl transition-transform group-hover:translate-x-1 group-hover:-translate-y-1"
+                className="text-white text-2xl transition-transform group-hover:translate-x-1 group-hover:-translate-y-1"
                 aria-hidden="true"
               >
                 ↗
