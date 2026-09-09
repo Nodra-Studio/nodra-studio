@@ -416,7 +416,7 @@ export default function Home() {
               </div>
             </div>
             <a
-              href="mailto:info@nodrastudio.com?subject=Quiero%20iniciar%20un%20proyecto"
+              href="https://wa.me/message/BHJIHS5E4QXDF1"
               className="group flex items-center justify-between bg-brand px-6 py-5 font-medium text-white!important hover:bg-[#C11007]"
             >
               <span className="text-white">Contanos tu proyecto</span>
