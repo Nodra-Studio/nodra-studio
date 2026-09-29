@@ -37,15 +37,21 @@ const projects = [
     image: "/projects/armonia-bienestar.webp",
     link: "https://armoniaybienestar.com/",
   },
-  {
-    number: "02",
-    name: "Intraud",
-    category: "Industria · Sitio corporativo",
-    description:
-      "Rediseño institucional y catálogo técnico para una empresa argentina de equipos de soldadura.",
-    image: "/projects/intraud.webp",
-    link: "https://intraud.vercel.app/",
-  },
+  /*
+   * Proyecto oculto temporalmente. Para restaurarlo, descomentá este objeto
+   * y eliminá el valor null que reserva su lugar en la grilla.
+   *
+   * {
+   *   number: "02",
+   *   name: "Intraud",
+   *   category: "Industria · Sitio corporativo",
+   *   description:
+   *     "Rediseño institucional y catálogo técnico para una empresa argentina de equipos de soldadura.",
+   *   image: "/projects/intraud.webp",
+   *   link: "https://intraud.vercel.app/",
+   * },
+   */
+  null,
   {
     number: "03",
     name: "Gallinas Libres",
@@ -247,47 +253,69 @@ export default function Home() {
             </div>
           </div>
           <div className="mt-20 grid gap-px bg-ink/20 sm:mt-28 lg:grid-cols-12">
-            {projects.map((project, index) => (
-              <article
-                key={project.number}
-                className={`project-card bg-background ${index % 3 === 0 ? "lg:col-span-7" : index % 3 === 1 ? "lg:col-span-5" : "lg:col-span-12"}`}
-              >
-                <a
-                  href={project.link}
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label={`Ver proyecto ${project.name}`}
+            {projects.map((project, index) => {
+              const columnSpan =
+                index % 3 === 0
+                  ? "lg:col-span-7"
+                  : index % 3 === 1
+                    ? "lg:col-span-5"
+                    : "lg:col-span-12";
+
+              if (!project) {
+                return (
+                  <div
+                    key="project-slot-02"
+                    className={`bg-background ${columnSpan}`}
+                    aria-hidden="true"
+                  >
+                    <div className="project-image bg-background" />
+                    <div className="min-h-32 bg-background sm:min-h-36" />
+                  </div>
+                );
+              }
+
+              return (
+                <article
+                  key={project.number}
+                  className={`project-card bg-background ${columnSpan}`}
                 >
-                  <div className="project-image">
-                    <Image
-                      src={project.image}
-                      alt={`Vista del sitio web de ${project.name}`}
-                      fill
-                      sizes={
-                        index % 3 === 2
-                          ? "(min-width: 1024px) 90vw, 100vw"
-                          : "(min-width: 1024px) 55vw, 100vw"
-                      }
-                      className="object-cover"
-                    />
-                    <span className="project-index">{project.number} ↗</span>
-                  </div>
-                  <div className="grid gap-4 p-5 sm:p-7 lg:grid-cols-[1fr_1.2fr]">
-                    <div>
-                      <p className="text-xs uppercase tracking-[0.12em] text-muted-foreground">
-                        {project.category}
-                      </p>
-                      <h3 className="mt-2 font-display text-4xl font-semibold uppercase tracking-[-0.02em]">
-                        {project.name}
-                      </h3>
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={`Ver proyecto ${project.name}`}
+                  >
+                    <div className="project-image">
+                      <Image
+                        src={project.image}
+                        alt={`Vista del sitio web de ${project.name}`}
+                        fill
+                        sizes={
+                          index % 3 === 2
+                            ? "(min-width: 1024px) 90vw, 100vw"
+                            : "(min-width: 1024px) 55vw, 100vw"
+                        }
+                        className="object-cover"
+                      />
+                      <span className="project-index">{project.number} ↗</span>
                     </div>
-                    <p className="text-base leading-7 text-muted-foreground">
-                      {project.description}
-                    </p>
-                  </div>
-                </a>
-              </article>
-            ))}
+                    <div className="grid gap-4 p-5 sm:p-7 lg:grid-cols-[1fr_1.2fr]">
+                      <div>
+                        <p className="text-xs uppercase tracking-[0.12em] text-muted-foreground">
+                          {project.category}
+                        </p>
+                        <h3 className="mt-2 font-display text-4xl font-semibold uppercase tracking-[-0.02em]">
+                          {project.name}
+                        </h3>
+                      </div>
+                      <p className="text-base leading-7 text-muted-foreground">
+                        {project.description}
+                      </p>
+                    </div>
+                  </a>
+                </article>
+              );
+            })}
           </div>
         </div>
       </section>
