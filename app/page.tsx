@@ -38,8 +38,7 @@ const projects = [
     link: "https://armoniaybienestar.com/",
   },
   /*
-   * Proyecto oculto temporalmente. Para restaurarlo, descomentá este objeto
-   * y eliminá el valor null que reserva su lugar en la grilla.
+   * Proyecto oculto temporalmente. Para restaurarlo, descomentá este objeto.
    *
    * {
    *   number: "02",
@@ -51,7 +50,6 @@ const projects = [
    *   link: "https://intraud.vercel.app/",
    * },
    */
-  null,
   {
     number: "03",
     name: "Gallinas Libres",
@@ -255,24 +253,15 @@ export default function Home() {
           <div className="mt-20 grid gap-px bg-ink/20 sm:mt-28 lg:grid-cols-12">
             {projects.map((project, index) => {
               const columnSpan =
-                index % 3 === 0
-                  ? "lg:col-span-7"
-                  : index % 3 === 1
-                    ? "lg:col-span-5"
-                    : "lg:col-span-12";
-
-              if (!project) {
-                return (
-                  <div
-                    key="project-slot-02"
-                    className={`bg-background ${columnSpan}`}
-                    aria-hidden="true"
-                  >
-                    <div className="aspect-video bg-background" />
-                    <div className="min-h-32 bg-background sm:min-h-36" />
-                  </div>
-                );
-              }
+                projects.length === 4
+                  ? index === 0 || index === 3
+                    ? "lg:col-span-7"
+                    : "lg:col-span-5"
+                  : index % 3 === 0
+                    ? "lg:col-span-7"
+                    : index % 3 === 1
+                      ? "lg:col-span-5"
+                      : "lg:col-span-12";
 
               return (
                 <article
@@ -291,7 +280,7 @@ export default function Home() {
                         alt={`Vista del sitio web de ${project.name}`}
                         fill
                         sizes={
-                          index % 3 === 2
+                          columnSpan === "lg:col-span-12"
                             ? "(min-width: 1024px) 90vw, 100vw"
                             : "(min-width: 1024px) 55vw, 100vw"
                         }
