@@ -268,7 +268,7 @@ export default function Home() {
                     className={`bg-background ${columnSpan}`}
                     aria-hidden="true"
                   >
-                    <div className="project-image bg-background" />
+                    <div className="aspect-video bg-background" />
                     <div className="min-h-32 bg-background sm:min-h-36" />
                   </div>
                 );
