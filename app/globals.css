@@ -170,21 +170,23 @@ a {
 .nodra-mark-stage--about .nodra-mark-piece {
   animation: none;
 }
-.nodra-mark-reveal[data-assembled="true"] .nodra-mark-piece {
-  animation-duration: 720ms;
-  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
-  animation-delay: 0s;
-  animation-iteration-count: 1;
-  animation-fill-mode: both;
+.nodra-mark-stage--about .nodra-mark-piece-left {
+  --mark-start-x: -65%;
+  --mark-start-y: 16%;
 }
-.nodra-mark-reveal[data-assembled="true"] .nodra-mark-piece-left {
-  animation-name: origin-piece-left-in;
+.nodra-mark-stage--about .nodra-mark-piece-right {
+  --mark-start-x: 65%;
+  --mark-start-y: -16%;
 }
-.nodra-mark-reveal[data-assembled="true"] .nodra-mark-piece-right {
-  animation-name: origin-piece-right-in;
+.nodra-mark-stage--about .nodra-mark-piece-diagonal {
+  --mark-start-x: -12%;
+  --mark-start-y: -12%;
 }
-.nodra-mark-reveal[data-assembled="true"] .nodra-mark-piece-diagonal {
-  animation-name: origin-piece-diagonal-in;
+.nodra-mark-reveal[data-state="ready"] .nodra-mark-piece {
+  transform: translate(var(--mark-start-x), var(--mark-start-y));
+}
+.nodra-mark-reveal[data-state="assembled"] .nodra-mark-piece {
+  animation: origin-piece-in 1400ms both cubic-bezier(0.45, 0, 0.2, 1);
 }
 .nodra-mark-guide {
   position: absolute;
@@ -365,25 +367,9 @@ a {
     transform: scaleX(1);
   }
 }
-@keyframes origin-piece-left-in {
+@keyframes origin-piece-in {
   from {
-    transform: translate(-65%, 16%);
-  }
-  to {
-    transform: translate(0);
-  }
-}
-@keyframes origin-piece-right-in {
-  from {
-    transform: translate(65%, -16%);
-  }
-  to {
-    transform: translate(0);
-  }
-}
-@keyframes origin-piece-diagonal-in {
-  from {
-    transform: translate(-12%, -12%);
+    transform: translate(var(--mark-start-x), var(--mark-start-y));
   }
   to {
     transform: translate(0);
