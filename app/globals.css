@@ -167,6 +167,25 @@ a {
 .nodra-mark-piece-diagonal {
   animation: mark-piece-diagonal-in 1050ms 690ms both cubic-bezier(0.16, 1, 0.3, 1);
 }
+.nodra-mark-stage--about .nodra-mark-piece {
+  animation: none;
+}
+.nodra-mark-reveal[data-assembled="true"] .nodra-mark-piece {
+  animation-duration: 720ms;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  animation-delay: 0s;
+  animation-iteration-count: 1;
+  animation-fill-mode: both;
+}
+.nodra-mark-reveal[data-assembled="true"] .nodra-mark-piece-left {
+  animation-name: origin-piece-left-in;
+}
+.nodra-mark-reveal[data-assembled="true"] .nodra-mark-piece-right {
+  animation-name: origin-piece-right-in;
+}
+.nodra-mark-reveal[data-assembled="true"] .nodra-mark-piece-diagonal {
+  animation-name: origin-piece-diagonal-in;
+}
 .nodra-mark-guide {
   position: absolute;
   z-index: 1;
@@ -346,6 +365,30 @@ a {
     transform: scaleX(1);
   }
 }
+@keyframes origin-piece-left-in {
+  from {
+    transform: translate(-65%, 16%);
+  }
+  to {
+    transform: translate(0);
+  }
+}
+@keyframes origin-piece-right-in {
+  from {
+    transform: translate(65%, -16%);
+  }
+  to {
+    transform: translate(0);
+  }
+}
+@keyframes origin-piece-diagonal-in {
+  from {
+    transform: translate(-12%, -12%);
+  }
+  to {
+    transform: translate(0);
+  }
+}
 @keyframes mark-guide-vertical-in {
   to {
     transform: scaleY(1);
@@ -400,6 +443,10 @@ a {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .nodra-mark-stage--about .nodra-mark-piece {
+    animation: none !important;
+    transform: none !important;
+  }
   .marquee-track {
     animation: none !important;
     transform: none !important;

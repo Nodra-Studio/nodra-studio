@@ -1,8 +1,16 @@
-export function NodraMarkAssembly() {
+export function NodraMarkAssembly({
+  variant = "hero",
+}: {
+  variant?: "hero" | "about";
+}) {
   return (
-    <div className="nodra-mark-stage" aria-hidden="true">
-      <span className="nodra-mark-guide nodra-mark-guide-horizontal" />
-      <span className="nodra-mark-guide nodra-mark-guide-vertical" />
+    <div className={`nodra-mark-stage nodra-mark-stage--${variant}`} aria-hidden="true">
+      {variant === "hero" && (
+        <>
+          <span className="nodra-mark-guide nodra-mark-guide-horizontal" />
+          <span className="nodra-mark-guide nodra-mark-guide-vertical" />
+        </>
+      )}
 
       <svg
         className="nodra-mark-assembly"
@@ -21,7 +29,7 @@ export function NodraMarkAssembly() {
         </g>
       </svg>
 
-      <span className="nodra-mark-node" />
+      {variant === "hero" && <span className="nodra-mark-node" />}
     </div>
   );
 }

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { NodraMarkAssembly } from "@/components/nodra-mark-assembly";
+import { NodraMarkReveal } from "@/components/nodra-mark-reveal";
 import { SiteHeader } from "@/components/site-header";
 import { IconBrandInstagram } from '@tabler/icons-react';
 import { IconBrandFacebook } from '@tabler/icons-react';
@@ -349,13 +350,9 @@ export default function Home() {
               <span>NOD(O) + RA</span>
             </div>
             <div className="my-24">
-              <Image
-                src="/brand/nodra-mark.webp"
-                alt="Isotipo de Nodra"
-                width={800}
-                height={800}
-                className="mx-auto w-3/5 max-w-64"
-              />
+              <NodraMarkReveal>
+                <NodraMarkAssembly variant="about" />
+              </NodraMarkReveal>
             </div>
             <div className="border-t border-white/20 pt-6">
               <p className="font-display text-3xl font-semibold uppercase">
