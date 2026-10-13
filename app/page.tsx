@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { NodraMarkAssembly } from "@/components/nodra-mark-assembly";
 import { SiteHeader } from "@/components/site-header";
 import { IconBrandInstagram } from '@tabler/icons-react';
 import { IconBrandFacebook } from '@tabler/icons-react';
@@ -144,20 +145,14 @@ export default function Home() {
           className="hero-panel relative col-span-3 hidden overflow-hidden border-l border-ink/15 bg-ink lg:block"
           aria-hidden="true"
         >
-          <div className="absolute inset-x-0 top-0 flex items-center justify-between border-b border-white/20 px-6 py-5 text-xs uppercase tracking-[0.18em] text-white/65">
+          <div className="hero-panel-meta absolute inset-x-0 top-0 flex items-center justify-between px-6 py-5 text-xs uppercase tracking-[0.18em] text-white/65">
             <span>01</span>
             <span>Nodo / Sistema</span>
           </div>
-          <div className="absolute inset-0 flex items-center justify-center p-12">
-            <Image
-              src="/brand/nodra-mark.webp"
-              alt=""
-              width={800}
-              height={800}
-              className="hero-mark w-full"
-            />
+          <div className="absolute inset-0 flex items-center justify-center p-10 xl:p-12">
+            <NodraMarkAssembly />
           </div>
-          <div className="absolute inset-x-0 bottom-0 border-t border-white/20 p-6 text-sm leading-6 text-white/70">
+          <div className="hero-panel-caption absolute inset-x-0 bottom-0 p-6 text-sm leading-6 text-white/70">
             Estrategia, diseño y tecnología trabajando como un solo sistema.
           </div>
         </aside>

@@ -120,8 +120,88 @@ a {
   animation: panel-in 700ms 150ms both cubic-bezier(0.65, 0, 0.35, 1);
   transform-origin: right;
 }
-.hero-mark {
-  animation: mark-in 900ms 450ms both cubic-bezier(0.22, 1, 0.36, 1);
+.hero-panel-meta::after,
+.hero-panel-caption::before {
+  position: absolute;
+  right: 0;
+  left: 0;
+  height: 1px;
+  background: rgb(255 255 255 / 20%);
+  content: "";
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: hero-rule-in 650ms 1050ms both cubic-bezier(0.65, 0, 0.35, 1);
+}
+.hero-panel-meta::after {
+  bottom: 0;
+}
+.hero-panel-caption::before {
+  top: 0;
+  transform-origin: right;
+}
+.nodra-mark-stage {
+  position: relative;
+  width: min(100%, 24rem);
+  aspect-ratio: 1;
+  color: var(--brand);
+  isolation: isolate;
+}
+.nodra-mark-assembly {
+  position: relative;
+  z-index: 2;
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+.nodra-mark-piece {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.nodra-mark-piece-left {
+  animation: mark-piece-left-in 950ms 520ms both cubic-bezier(0.16, 1, 0.3, 1);
+}
+.nodra-mark-piece-right {
+  animation: mark-piece-right-in 950ms 600ms both cubic-bezier(0.16, 1, 0.3, 1);
+}
+.nodra-mark-piece-diagonal {
+  animation: mark-piece-diagonal-in 1050ms 690ms both cubic-bezier(0.16, 1, 0.3, 1);
+}
+.nodra-mark-guide {
+  position: absolute;
+  z-index: 1;
+  display: block;
+  background: rgb(255 255 255 / 13%);
+}
+.nodra-mark-guide-horizontal {
+  top: 50%;
+  right: -2rem;
+  left: -2rem;
+  height: 1px;
+  transform: scaleX(0);
+  transform-origin: center;
+  animation: mark-guide-horizontal-in 700ms 1120ms both cubic-bezier(0.65, 0, 0.35, 1);
+}
+.nodra-mark-guide-vertical {
+  top: -2rem;
+  bottom: -2rem;
+  left: 50%;
+  width: 1px;
+  transform: scaleY(0);
+  transform-origin: center;
+  animation: mark-guide-vertical-in 700ms 1200ms both cubic-bezier(0.65, 0, 0.35, 1);
+}
+.nodra-mark-node {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 3;
+  width: 0.4rem;
+  height: 0.4rem;
+  background: white;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0);
+  animation: mark-node-in 400ms 1510ms both cubic-bezier(0.16, 1, 0.3, 1);
 }
 .section-label {
   font-size: 0.875rem;
@@ -223,10 +303,66 @@ a {
     transform: scaleX(0);
   }
 }
-@keyframes mark-in {
+@keyframes hero-rule-in {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+@keyframes mark-piece-left-in {
   from {
     opacity: 0;
-    transform: translateX(2rem);
+    transform: translate(-10rem, 7rem) rotate(-14deg);
+  }
+  to {
+    opacity: 1;
+    transform: translate(0) rotate(0);
+  }
+}
+@keyframes mark-piece-right-in {
+  from {
+    opacity: 0;
+    transform: translate(9rem, -8rem) rotate(12deg);
+  }
+  to {
+    opacity: 1;
+    transform: translate(0) rotate(0);
+  }
+}
+@keyframes mark-piece-diagonal-in {
+  from {
+    opacity: 0;
+    transform: translate(7rem, 9rem) rotate(18deg) scale(0.82);
+  }
+  to {
+    opacity: 1;
+    transform: translate(0) rotate(0) scale(1);
+  }
+}
+@keyframes mark-guide-horizontal-in {
+  to {
+    transform: scaleX(1);
+  }
+}
+@keyframes mark-guide-vertical-in {
+  to {
+    transform: scaleY(1);
+  }
+}
+@keyframes mark-node-in {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0);
+  }
+  65% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.35);
+  }
+  100% {
+    opacity: 0.8;
+    transform: translate(-50%, -50%) scale(1);
   }
 }
 @keyframes marquee {
@@ -265,16 +401,20 @@ a {
 
 @media (prefers-reduced-motion: reduce) {
   .marquee-track {
-    animation-duration: 22s !important;
+    animation: none !important;
+    transform: none !important;
   }
   html {
     scroll-behavior: auto;
   }
-  *:not(.marquee-track), *:not(.marquee-track)::before, *:not(.marquee-track):after {
+  *,
+  *::before,
+  *::after {
     scroll-behavior: auto !important;
-    transition-duration: .01ms !important;
-    animation-duration: .01ms !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
     animation-delay: 0s !important;
+    animation-iteration-count: 1 !important;
   }
 }
 
