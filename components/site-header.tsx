@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { IconArrowDownRight } from "@tabler/icons-react";
 import {
   Dialog,
   DialogClose,
@@ -43,8 +44,12 @@ export function SiteHeader() {
           </ul>
         </nav>
 
-        <a className="contact-link hidden md:inline-flex" href="#contacto">
-          Hablemos <span aria-hidden="true">↗</span>
+        <a
+          className="contact-link hidden items-center gap-2 md:inline-flex"
+          href="#contacto"
+        >
+          Hablemos
+          <IconArrowDownRight size={18} aria-hidden="true" focusable="false" />
         </a>
 
         <div className="md:hidden">
@@ -107,8 +112,9 @@ export function SiteHeader() {
               <div className="flex items-center justify-between border-t border-white/20 px-5 py-6 text-sm sm:px-8">
                 <span className="text-white/55">Buenos Aires · Málaga</span>
                 <DialogClose asChild>
-                  <a href="#contacto" className="text-brand">
-                    Hablemos ↗
+                  <a href="#contacto" className="inline-flex items-center gap-2 text-brand">
+                    Hablemos
+                    <IconArrowDownRight size={18} aria-hidden="true" focusable="false" />
                   </a>
                 </DialogClose>
               </div>

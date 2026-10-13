@@ -2,8 +2,12 @@ import Image from "next/image";
 import { NodraMarkAssembly } from "@/components/nodra-mark-assembly";
 import { NodraMarkReveal } from "@/components/nodra-mark-reveal";
 import { SiteHeader } from "@/components/site-header";
-import { IconBrandInstagram } from '@tabler/icons-react';
-import { IconBrandFacebook } from '@tabler/icons-react';
+import {
+  IconArrowUpRight,
+  IconBrandFacebook,
+  IconBrandInstagram,
+  IconBrandWhatsapp,
+} from "@tabler/icons-react";
 
 const services = [
   {
@@ -282,7 +286,10 @@ export default function Home() {
                         }
                         className="object-cover"
                       />
-                      <span className="project-index">{project.number} ↗</span>
+                      <span className="project-index">
+                        {project.number}
+                        <IconArrowUpRight size={16} aria-hidden="true" focusable="false" />
+                      </span>
                     </div>
                     <div className="grid gap-4 p-5 sm:p-7 lg:grid-cols-[1fr_1.2fr]">
                       <div>
@@ -426,15 +433,16 @@ export default function Home() {
             </div>
             <a
               href="https://wa.me/message/BHJIHS5E4QXDF1"
-              className="group flex items-center justify-between bg-brand px-6 py-5 font-medium text-white!important hover:bg-[#C11007]"
+              aria-label="Contanos tu proyecto por WhatsApp"
+              className="group flex items-center justify-between gap-4 bg-brand px-6 py-5 font-medium text-white hover:bg-[#C11007]"
             >
               <span className="text-white">Contanos tu proyecto</span>
-              <span
-                className="text-white text-2xl transition-transform group-hover:translate-x-1 group-hover:-translate-y-1"
+              <IconBrandWhatsapp
+                size={24}
+                className="shrink-0 text-white transition-transform group-hover:scale-105"
                 aria-hidden="true"
-              >
-                ↗
-              </span>
+                focusable="false"
+              />
             </a>
           </div>
         </div>
