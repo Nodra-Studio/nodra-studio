@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { IconArrowDownRight } from "@tabler/icons-react";
+import { IconArrowDownRight, IconMenu2, IconX } from "@tabler/icons-react";
 import {
   Dialog,
   DialogClose,
@@ -46,7 +46,7 @@ export function SiteHeader() {
 
         <a
           className="contact-link hidden items-center gap-2 md:inline-flex"
-          href="#contacto"
+          href="#contacto-whatsapp"
         >
           Hablemos
           <IconArrowDownRight size={18} aria-hidden="true" focusable="false" />
@@ -58,8 +58,7 @@ export function SiteHeader() {
               className="menu-trigger"
               aria-label="Abrir menú"
             >
-              <span />
-              <span />
+              <IconMenu2 size={24} aria-hidden="true" focusable="false" />
             </DialogTrigger>
             <DialogContent
               showCloseButton={false}
@@ -79,8 +78,7 @@ export function SiteHeader() {
                   className="h-auto w-36 brightness-0 invert"
                 />
                 <DialogClose className="menu-close" aria-label="Cerrar menú">
-                  <span />
-                  <span />
+                  <IconX size={24} aria-hidden="true" focusable="false" />
                 </DialogClose>
               </div>
 
@@ -112,7 +110,7 @@ export function SiteHeader() {
               <div className="flex items-center justify-between border-t border-white/20 px-5 py-6 text-sm sm:px-8">
                 <span className="text-white/55">Buenos Aires · Málaga</span>
                 <DialogClose asChild>
-                  <a href="#contacto" className="inline-flex items-center gap-2 text-brand">
+                  <a href="#contacto-whatsapp" className="inline-flex items-center gap-2 text-brand">
                     Hablemos
                     <IconArrowDownRight size={18} aria-hidden="true" focusable="false" />
                   </a>

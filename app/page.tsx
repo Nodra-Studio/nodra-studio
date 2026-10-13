@@ -432,9 +432,10 @@ export default function Home() {
               </div>
             </div>
             <a
+              id="contacto-whatsapp"
               href="https://wa.me/message/BHJIHS5E4QXDF1"
               aria-label="Contanos tu proyecto por WhatsApp"
-              className="group flex items-center justify-between gap-4 bg-brand px-6 py-5 font-medium text-white hover:bg-[#C11007]"
+              className="group flex scroll-mt-28 items-center justify-between gap-4 bg-brand px-6 py-5 font-medium text-white hover:bg-[#C11007]"
             >
               <span className="text-white">Contanos tu proyecto</span>
               <IconBrandWhatsapp
