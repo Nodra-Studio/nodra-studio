@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { useRef, type MouseEvent } from "react";
 import { IconArrowDownRight, IconMenu2, IconX } from "@tabler/icons-react";
 import {
   Dialog,
@@ -18,6 +19,38 @@ const navigation = [
 ];
 
 export function SiteHeader() {
+  const navigationTarget = useRef<string | null>(null);
+
+  function rememberNavigationTarget(event: MouseEvent<HTMLAnchorElement>) {
+    if (
+      event.defaultPrevented ||
+      event.button !== 0 ||
+      event.metaKey ||
+      event.ctrlKey ||
+      event.shiftKey ||
+      event.altKey
+    ) {
+      return;
+    }
+
+    navigationTarget.current = event.currentTarget.hash.slice(1);
+  }
+
+  function handleCloseAutoFocus(event: Event) {
+    const targetId = navigationTarget.current;
+    navigationTarget.current = null;
+
+    if (!targetId) return;
+
+    const target = document.getElementById(targetId);
+    if (!target) return;
+
+    // Native anchor navigation handles scrolling. Returning focus to the
+    // menu trigger here would interrupt it and scroll back to the header.
+    event.preventDefault();
+    target.focus({ preventScroll: true });
+  }
+
   return (
     <header className="relative z-40 border-b border-ink/15 bg-background">
       <div className="site-container flex h-20 items-center justify-between gap-8 px-5 sm:h-24 sm:px-8">
@@ -62,6 +95,7 @@ export function SiteHeader() {
             </DialogTrigger>
             <DialogContent
               showCloseButton={false}
+              onCloseAutoFocus={handleCloseAutoFocus}
               className="fixed inset-0 left-0 top-0 flex h-svh max-h-none w-full max-w-none translate-x-0 translate-y-0 flex-col gap-0 border-0 bg-ink p-0 text-white shadow-none data-[state=open]:zoom-in-100"
             >
               <DialogTitle className="sr-only">Navegación</DialogTitle>
@@ -92,6 +126,7 @@ export function SiteHeader() {
                       <DialogClose asChild>
                         <a
                           href={item.href}
+                          onClick={rememberNavigationTarget}
                           className="group flex items-end justify-between py-5 sm:py-6"
                         >
                           <span className="font-display text-[clamp(3.5rem,16vw,6rem)] font-semibold uppercase leading-none tracking-[-0.035em] transition-colors group-hover:text-brand">
@@ -110,7 +145,11 @@ export function SiteHeader() {
               <div className="flex items-center justify-between border-t border-white/20 px-5 py-6 text-sm sm:px-8">
                 <span className="text-white/55">Buenos Aires · Málaga</span>
                 <DialogClose asChild>
-                  <a href="#contacto-whatsapp" className="inline-flex items-center gap-2 text-brand">
+                  <a
+                    href="#contacto-whatsapp"
+                    onClick={rememberNavigationTarget}
+                    className="inline-flex items-center gap-2 text-brand"
+                  >
                     Hablemos
                     <IconArrowDownRight size={18} aria-hidden="true" focusable="false" />
                   </a>

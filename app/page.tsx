@@ -190,6 +190,7 @@ export default function Home() {
 
       <section
         id="servicios"
+        tabIndex={-1}
         className="scroll-mt-24 border-t border-ink/15 bg-surface"
       >
         <div className="site-container border-x border-ink/15 px-5 py-24 sm:px-8 sm:py-32 lg:px-12 lg:py-40">
@@ -234,7 +235,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="proyectos" className="scroll-mt-24 border-t border-ink/15">
+      <section id="proyectos" tabIndex={-1} className="scroll-mt-24 border-t border-ink/15">
         <div className="site-container border-x border-ink/15 px-5 py-24 sm:px-8 sm:py-32 lg:px-12 lg:py-40">
           <div className="reveal-grid grid gap-10 lg:grid-cols-12">
             <p className="section-label lg:col-span-3">02 — Proyectos</p>
@@ -332,6 +333,7 @@ export default function Home() {
 
       <section
         id="nosotros"
+        tabIndex={-1}
         className="scroll-mt-24 border-t border-ink/15 bg-ink text-white"
       >
         <div className="site-container grid border-x border-white/20 lg:grid-cols-12">
