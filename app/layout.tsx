@@ -62,9 +62,6 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
-  other: {
-    "codex-preview": "development",
-  },
   icons: {
     icon: "/brand/nodra-mark.webp",
   },
