@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useRef, type MouseEvent } from "react";
-import { IconArrowDownRight, IconMenu2, IconX } from "@tabler/icons-react";
+import { IconArrowUpRight, IconMenu2, IconX } from "@tabler/icons-react";
 import {
   Dialog,
   DialogClose,
@@ -11,6 +11,8 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+
+const whatsappUrl = "https://wa.me/message/BHJIHS5E4QXDF1";
 
 const navigation = [
   { href: "#servicios", label: "Servicios", number: "01" },
@@ -52,7 +54,7 @@ export function SiteHeader() {
   }
 
   return (
-    <header className="relative z-40 border-b border-ink/15 bg-background">
+    <header className="sticky top-0 z-40 border-b border-ink/15 bg-background">
       <div className="site-container flex h-20 items-center justify-between gap-8 px-5 sm:h-24 sm:px-8">
         <a href="#inicio" aria-label="Nodra Studio, inicio">
           <Image
@@ -79,10 +81,12 @@ export function SiteHeader() {
 
         <a
           className="contact-link hidden items-center gap-2 md:inline-flex"
-          href="#contacto-whatsapp"
+          href={whatsappUrl}
+          target="_blank"
+          rel="noreferrer"
         >
           Hablemos
-          <IconArrowDownRight size={18} aria-hidden="true" focusable="false" />
+          <IconArrowUpRight size={18} aria-hidden="true" focusable="false" />
         </a>
 
         <div className="md:hidden">
@@ -146,12 +150,13 @@ export function SiteHeader() {
                 <span className="text-white/55">Buenos Aires · Málaga</span>
                 <DialogClose asChild>
                   <a
-                    href="#contacto-whatsapp"
-                    onClick={rememberNavigationTarget}
+                    href={whatsappUrl}
+                    target="_blank"
+                    rel="noreferrer"
                     className="inline-flex items-center gap-2 text-brand"
                   >
                     Hablemos
-                    <IconArrowDownRight size={18} aria-hidden="true" focusable="false" />
+                    <IconArrowUpRight size={18} aria-hidden="true" focusable="false" />
                   </a>
                 </DialogClose>
               </div>

@@ -6,8 +6,27 @@ import {
   IconArrowUpRight,
   IconBrandFacebook,
   IconBrandInstagram,
+  IconBrandTiktok,
   IconBrandWhatsapp,
 } from "@tabler/icons-react";
+
+const socialLinks = [
+  {
+    href: "https://www.instagram.com/studio.nodra/",
+    label: "Instagram",
+    Icon: IconBrandInstagram,
+  },
+  {
+    href: "https://www.facebook.com/profile.php?id=61594058189958",
+    label: "Facebook",
+    Icon: IconBrandFacebook,
+  },
+  {
+    href: "https://www.tiktok.com/@studio.nodra",
+    label: "TikTok",
+    Icon: IconBrandTiktok,
+  },
+];
 
 const services = [
   {
@@ -184,6 +203,15 @@ export default function Home() {
             className="group flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-white text-red-600 shadow-md transition-all duration-300 ease-out hover:scale-105 hover:shadow-lg active:scale-95"
           >
             <IconBrandFacebook className="w-6 h-6 sm:w-7 sm:h-7 transition-transform duration-300 group-hover:-rotate-6 text-red-600" stroke={2.0} />
+          </a>
+          <a
+            href="https://www.tiktok.com/@studio.nodra"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="TikTok"
+            className="group flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-white text-red-600 shadow-md transition-all duration-300 ease-out hover:scale-105 hover:shadow-lg active:scale-95"
+          >
+            <IconBrandTiktok className="w-6 h-6 sm:w-7 sm:h-7 transition-transform duration-300 group-hover:rotate-6 text-red-600" stroke={2.0} />
           </a>
         </div>
       </section>
@@ -465,6 +493,21 @@ export default function Home() {
               <p className="mt-5 text-sm text-white/50">
                 Diseño y desarrollo digital.
               </p>
+              <ul className="mt-6 flex items-center gap-3">
+                {socialLinks.map(({ href, label, Icon }) => (
+                  <li key={label}>
+                    <a
+                      href={href}
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label={label}
+                      className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 text-white/70 transition-colors hover:border-brand hover:bg-brand hover:text-white"
+                    >
+                      <Icon size={20} stroke={1.75} aria-hidden="true" focusable="false" />
+                    </a>
+                  </li>
+                ))}
+              </ul>
             </div>
             <div className="flex flex-wrap gap-x-8 gap-y-3 text-sm">
               <a className="footer-link" href="#servicios">
