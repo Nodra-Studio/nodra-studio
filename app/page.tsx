@@ -93,15 +93,19 @@ const projects = [
     image: "/projects/iabot.webp",
     link: "https://iabot.com.ar/",
   },
-  {
-    number: "05",
-    name: "Cerrajería APRI",
-    category: "Servicios · Sitio institucional",
-    description:
-      "Sitio institucional para una cerrajería. Diseño claro y moderno, con contacto directo para urgencias en Mercedes y alrededores.",
-    image: "/projects/apri.webp",
-    link: "https://cerrajeriaapri24hs.com.ar/",
-  },
+  /*
+   * Proyecto oculto temporalmente. Para restaurarlo, descomentá este objeto.
+   *
+   * {
+   *   number: "05",
+   *   name: "Cerrajería APRI",
+   *   category: "Servicios · Sitio institucional",
+   *   description:
+   *     "Sitio institucional para una cerrajería. Diseño claro y moderno, con contacto directo para urgencias en Mercedes y alrededores.",
+   *   image: "/projects/apri.webp",
+   *   link: "https://cerrajeriaapri24hs.com.ar/",
+   * },
+   */
 ];
 
 const process = [
