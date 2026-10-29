@@ -93,6 +93,15 @@ const projects = [
     image: "/projects/iabot.webp",
     link: "https://iabot.com.ar/",
   },
+  {
+    number: "06",
+    name: "Fabian Taller Automotor",
+    category: "Automotor · Landing page",
+    description:
+      "Landing page para un taller mecánico especializado en frenos, embrague y tren delantero. Turnos directos por WhatsApp y ubicación del taller.",
+    image: "/projects/fabian-taller.webp",
+    link: "https://fabian-taller.vercel.app/",
+  },
   /*
    * Proyecto oculto temporalmente. Para restaurarlo, descomentá este objeto.
    *
