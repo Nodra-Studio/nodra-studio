@@ -6,6 +6,7 @@ import {
   IconArrowUpRight,
   IconBrandFacebook,
   IconBrandInstagram,
+  IconBrandLinkedin,
   IconBrandTiktok,
   IconBrandWhatsapp,
 } from "@tabler/icons-react";
@@ -15,16 +16,25 @@ const socialLinks = [
     href: "https://www.instagram.com/studio.nodra/",
     label: "Instagram",
     Icon: IconBrandInstagram,
+    hoverRotate: "group-hover:rotate-6",
   },
   {
     href: "https://www.facebook.com/profile.php?id=61594058189958",
     label: "Facebook",
     Icon: IconBrandFacebook,
+    hoverRotate: "group-hover:-rotate-6",
   },
   {
     href: "https://www.tiktok.com/@studio.nodra",
     label: "TikTok",
     Icon: IconBrandTiktok,
+    hoverRotate: "group-hover:rotate-6",
+  },
+  {
+    href: "https://www.linkedin.com/company/nodra-studio225",
+    label: "LinkedIn",
+    Icon: IconBrandLinkedin,
+    hoverRotate: "group-hover:-rotate-6",
   },
 ];
 
@@ -199,33 +209,18 @@ export default function Home() {
         className="site-container grid min-h-7.5 scroll-mt-24 grid-cols-12 border-x border-ink/15 bg-brand"
       >
         <div className="col-span-12 flex items-center justify-center gap-5 sm:gap-6 py-6">
-          <a
-            href="https://www.instagram.com/studio.nodra/"
-            target="_blank"
-            rel="noreferrer"
-            aria-label="Instagram"
-            className="group flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-white text-red-600 shadow-md transition-all duration-300 ease-out hover:scale-105 hover:shadow-lg active:scale-95"
-          >
-            <IconBrandInstagram className="w-6 h-6 sm:w-7 sm:h-7 transition-transform duration-300 group-hover:rotate-6 text-red-600" stroke={2.0} />
-          </a>
-          <a
-            href="https://www.facebook.com/profile.php?id=61594058189958"
-            target="_blank"
-            rel="noreferrer"
-            aria-label="Facebook"
-            className="group flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-white text-red-600 shadow-md transition-all duration-300 ease-out hover:scale-105 hover:shadow-lg active:scale-95"
-          >
-            <IconBrandFacebook className="w-6 h-6 sm:w-7 sm:h-7 transition-transform duration-300 group-hover:-rotate-6 text-red-600" stroke={2.0} />
-          </a>
-          <a
-            href="https://www.tiktok.com/@studio.nodra"
-            target="_blank"
-            rel="noreferrer"
-            aria-label="TikTok"
-            className="group flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-white text-red-600 shadow-md transition-all duration-300 ease-out hover:scale-105 hover:shadow-lg active:scale-95"
-          >
-            <IconBrandTiktok className="w-6 h-6 sm:w-7 sm:h-7 transition-transform duration-300 group-hover:rotate-6 text-red-600" stroke={2.0} />
-          </a>
+          {socialLinks.map(({ href, label, Icon, hoverRotate }) => (
+            <a
+              key={label}
+              href={href}
+              target="_blank"
+              rel="noreferrer"
+              aria-label={label}
+              className="group flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-white text-red-600 shadow-md transition-all duration-300 ease-out hover:scale-105 hover:shadow-lg active:scale-95"
+            >
+              <Icon className={`w-6 h-6 sm:w-7 sm:h-7 transition-transform duration-300 ${hoverRotate} text-red-600`} stroke={2.0} />
+            </a>
+          ))}
         </div>
       </section>
 
@@ -507,16 +502,22 @@ export default function Home() {
                 Diseño y desarrollo digital.
               </p>
               <ul className="mt-6 flex items-center gap-3">
-                {socialLinks.map(({ href, label, Icon }) => (
+                {socialLinks.map(({ href, label, Icon, hoverRotate }) => (
                   <li key={label}>
                     <a
                       href={href}
                       target="_blank"
                       rel="noreferrer"
                       aria-label={label}
-                      className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 text-white/70 transition-colors hover:border-brand hover:bg-brand hover:text-white"
+                      className="group flex h-10 w-10 items-center justify-center rounded-full border border-white/20 text-white/70 shadow-md transition-all duration-300 ease-out hover:scale-105 hover:border-brand hover:bg-brand hover:text-white hover:shadow-lg active:scale-95"
                     >
-                      <Icon size={20} stroke={1.75} aria-hidden="true" focusable="false" />
+                      <Icon
+                        size={20}
+                        stroke={1.75}
+                        aria-hidden="true"
+                        focusable="false"
+                        className={`transition-transform duration-300 ${hoverRotate}`}
+                      />
                     </a>
                   </li>
                 ))}
