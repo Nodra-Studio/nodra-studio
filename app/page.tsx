@@ -1,4 +1,9 @@
 import Image from "next/image";
+import nodraLogo from "@/public/brand/nodra-logo-web.webp";
+import armoniaImage from "@/public/projects/armonia-bienestar.webp";
+import gallinasImage from "@/public/projects/gallinas.webp";
+import iabotImage from "@/public/projects/iabot.webp";
+import fabianImage from "@/public/projects/fabian-taller.webp";
 import { NodraMarkAssembly } from "@/components/nodra-mark-assembly";
 import { NodraMarkReveal } from "@/components/nodra-mark-reveal";
 import { SiteHeader } from "@/components/site-header";
@@ -69,7 +74,7 @@ const projects = [
     category: "Bienestar · Landing page",
     description:
       "Landing page para un centro de terapias alternativas. Diseño minimalista y optimizado para mobile y performance.",
-    image: "/projects/armonia-bienestar.webp",
+    image: armoniaImage,
     link: "https://armoniaybienestar.com/",
   },
   /*
@@ -91,7 +96,7 @@ const projects = [
     category: "Industria avícola · Landing page",
     description:
       "Landing page para criadores avícolas independientes. Optimizada para mobile, performance y conversión.",
-    image: "/projects/gallinas.webp",
+    image: gallinasImage,
     link: "https://gallinaslibres.com/",
   },
   {
@@ -100,7 +105,7 @@ const projects = [
     category: "Educación · Plataforma web",
     description:
       "Web para un taller de robótica educativa. Presentación de cursos, inscripciones online y recursos para estudiantes.",
-    image: "/projects/iabot.webp",
+    image: iabotImage,
     link: "https://iabot.com.ar/",
   },
   {
@@ -109,7 +114,7 @@ const projects = [
     category: "Automotor · Landing page",
     description:
       "Landing page para un taller mecánico especializado en frenos, embrague y tren delantero. Turnos directos por WhatsApp y ubicación del taller.",
-    image: "/projects/fabian-taller.webp",
+    image: fabianImage,
     link: "https://fabian-taller.vercel.app/",
   },
   /*
@@ -318,8 +323,10 @@ export default function Home() {
                         fill
                         sizes={
                           columnSpan === "lg:col-span-12"
-                            ? "(min-width: 1024px) 90vw, 100vw"
-                            : "(min-width: 1024px) 55vw, 100vw"
+                            ? "(min-width: 1536px) 1440px, (min-width: 1024px) calc(100vw - 96px), (min-width: 640px) calc(100vw - 64px), calc(100vw - 40px)"
+                            : columnSpan === "lg:col-span-7"
+                              ? "(min-width: 1536px) 840px, (min-width: 1024px) calc(58.333vw - 56px), (min-width: 640px) calc(100vw - 64px), calc(100vw - 40px)"
+                              : "(min-width: 1536px) 600px, (min-width: 1024px) calc(41.667vw - 40px), (min-width: 640px) calc(100vw - 64px), calc(100vw - 40px)"
                         }
                         className="object-cover"
                       />
@@ -492,10 +499,9 @@ export default function Home() {
           <div className="flex flex-col gap-12 sm:flex-row sm:items-end sm:justify-between">
             <div>
               <Image
-                src="/brand/nodra-logo.webp"
+                src={nodraLogo}
                 alt="Nodra Studio"
-                width={2048}
-                height={682}
+                unoptimized
                 className="h-auto w-44 brightness-0 invert"
               />
               <p className="mt-5 text-sm text-white/50">

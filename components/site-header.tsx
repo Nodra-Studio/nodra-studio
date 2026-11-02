@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import nodraLogo from "@/public/brand/nodra-logo-web.webp";
 import { useRef, type MouseEvent } from "react";
 import { IconArrowUpRight, IconMenu2, IconX } from "@tabler/icons-react";
 import {
@@ -58,11 +59,10 @@ export function SiteHeader() {
       <div className="site-container flex h-20 items-center justify-between gap-8 px-5 sm:h-24 sm:px-8">
         <a href="#inicio" aria-label="Nodra Studio, inicio">
           <Image
-            src="/brand/nodra-logo.webp"
+            src={nodraLogo}
             alt="Nodra Studio"
-            width={2048}
-            height={682}
-            priority
+            unoptimized
+            preload
             className="h-auto w-36 sm:w-44"
           />
         </a>
@@ -109,10 +109,9 @@ export function SiteHeader() {
 
               <div className="flex h-20 items-center justify-between border-b border-white/20 px-5 sm:h-24 sm:px-8">
                 <Image
-                  src="/brand/nodra-logo.webp"
+                  src={nodraLogo}
                   alt="Nodra Studio"
-                  width={2048}
-                  height={682}
+                  unoptimized
                   className="h-auto w-36 brightness-0 invert"
                 />
                 <DialogClose className="menu-close" aria-label="Cerrar menú">
